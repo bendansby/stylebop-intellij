@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.bendansby.stylebop</id>
     <name>StyleBop</name>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
     <vendor email="hello@bendansby.com" url="https://bendansby.com/apps/stylebop">Ben Dansby</vendor>
 
     <description><![CDATA[
@@ -17,6 +17,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+        <h3>0.1.1</h3>
+        <ul>
+            <li>Drop the upper-bound IDE version constraint &mdash; the plugin now loads cleanly on every IDE 2024.1+.</li>
+        </ul>
         <h3>0.1.0</h3>
         <ul>
             <li>Initial release. Right-click <code>.css</code> files or folders to open them in StyleBop.</li>
@@ -24,7 +28,12 @@
         </ul>
     ]]></change-notes>
 
-    <!-- Works in all JetBrains IDEs (IntelliJ IDEA, WebStorm, PyCharm, etc.) -->
+    <!-- Works in all JetBrains IDEs (IntelliJ IDEA, WebStorm, PyCharm, etc.).
+         since-build is set here (not in build.gradle.kts) so the
+         until-build attribute is fully omitted — per JetBrains'
+         guidance, that means "compatible with every future IDE
+         version" without forcing an arbitrary upper-bound choice. -->
+    <idea-version since-build="241"/>
     <depends>com.intellij.modules.platform</depends>
 
     <actions>

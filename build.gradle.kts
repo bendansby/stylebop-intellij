@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.bendansby"
-version = "0.1.0"
+version = "0.1.1"
 
 repositories {
     mavenCentral()
@@ -36,19 +36,9 @@ kotlin {
     jvmToolchain(17)
 }
 
-intellijPlatform {
-    pluginConfiguration {
-        ideaVersion {
-            // 241 = IntelliJ 2024.1. Older builds have stale Kotlin
-            // metadata + missing ActionUpdateThread.
-            sinceBuild = "241"
-            // Compatible up through IntelliJ 2029.x (branch 299).
-            // The plugin only uses extremely stable platform APIs
-            // (AnAction, ActionUpdateThread, Messages, VirtualFile),
-            // so this is a generous-but-realistic upper bound.
-            // (Marketplace rejects an empty until-build attribute,
-            // so we have to set *something*.)
-            untilBuild = "299.*"
-        }
-    }
-}
+// `<idea-version since-build="…"/>` is declared directly in
+// plugin.xml so the until-build attribute is fully omitted (per
+// JetBrains' "compatible with all future IDE versions" guidance).
+// We deliberately don't configure pluginConfiguration.ideaVersion
+// here — the v2 plugin's patchPluginXml task would always emit a
+// default until-build value, which trips the Marketplace verifier.
