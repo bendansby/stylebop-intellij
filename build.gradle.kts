@@ -42,10 +42,13 @@ intellijPlatform {
             // 241 = IntelliJ 2024.1. Older builds have stale Kotlin
             // metadata + missing ActionUpdateThread.
             sinceBuild = "241"
-            // Forward-compatible — empty untilBuild lets the plugin
-            // keep loading on every newer IDE release until something
-            // genuinely breaks the API.
-            untilBuild = ""
+            // Compatible up through IntelliJ 2029.x (branch 299).
+            // The plugin only uses extremely stable platform APIs
+            // (AnAction, ActionUpdateThread, Messages, VirtualFile),
+            // so this is a generous-but-realistic upper bound.
+            // (Marketplace rejects an empty until-build attribute,
+            // so we have to set *something*.)
+            untilBuild = "299.*"
         }
     }
 }
