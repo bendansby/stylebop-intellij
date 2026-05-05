@@ -1,0 +1,40 @@
+<idea-plugin>
+    <id>com.bendansby.stylebop</id>
+    <name>StyleBop</name>
+    <version>0.1.0</version>
+    <vendor email="hello@bendansby.com" url="https://bendansby.com/apps/stylebop">Ben Dansby</vendor>
+
+    <description><![CDATA[
+        Open the current CSS file or workspace folder in <a href="https://bendansby.com/apps/stylebop">StyleBop</a> &mdash;
+        a visual macOS editor for stylesheets.
+        <br><br>
+        Right-click any <code>.css</code> file or folder and pick <b>Open in StyleBop</b>.
+        The app launches, opens the project, and lands on the construct your cursor was on
+        &mdash; a ruleset opens the Rulesets canvas, a <code>@keyframes</code> rule opens the
+        Animations tab, a custom property opens the Tokens tab, and so on.
+        <br><br>
+        Requires macOS and a StyleBop install.
+    ]]></description>
+
+    <change-notes><![CDATA[
+        <h3>0.1.0</h3>
+        <ul>
+            <li>Initial release. Right-click <code>.css</code> files or folders to open them in StyleBop.</li>
+            <li>Cursor line is forwarded so the smart-router can open the matching visual surface.</li>
+        </ul>
+    ]]></change-notes>
+
+    <!-- Works in all JetBrains IDEs (IntelliJ IDEA, WebStorm, PyCharm, etc.) -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <actions>
+        <action id="com.bendansby.stylebop.OpenInStyleBopAction"
+                class="com.bendansby.stylebop.OpenInStyleBopAction"
+                text="Open in StyleBop"
+                description="Open this CSS file or folder in StyleBop">
+            <add-to-group group-id="EditorPopupMenu"      anchor="last"/>
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+            <add-to-group group-id="EditorTabPopupMenu"   anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
