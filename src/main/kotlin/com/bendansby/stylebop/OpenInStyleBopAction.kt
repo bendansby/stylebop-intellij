@@ -70,11 +70,15 @@ class OpenInStyleBopAction : AnAction() {
     }
 
     override fun update(e: AnActionEvent) {
-        // Show the menu item for `.css` files and any folder. Hidden
-        // for everything else so we don't pollute the right-click menu.
+        // Show the menu item for `.css`, `.html`, `.htm` files and any
+        // folder. Hidden for everything else so we don't pollute the
+        // right-click menu. HTML files are valid targets because
+        // StyleBop edits the inner `<style>` block (and inline
+        // `style="…"` attributes) as if they were CSS.
         val file = resolveTarget(e)
+        val ext = file?.extension?.lowercase()
         e.presentation.isEnabledAndVisible = file != null &&
-            (file.isDirectory || file.extension?.lowercase() == "css")
+            (file.isDirectory || ext == "css" || ext == "html" || ext == "htm")
     }
 
     /**

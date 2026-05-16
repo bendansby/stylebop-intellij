@@ -1,6 +1,6 @@
 # StyleBop for JetBrains IDEs
 
-Right-click any CSS file or folder in IntelliJ IDEA, WebStorm, PyCharm, etc. and pick **Open in StyleBop** to launch [StyleBop](https://bendansby.com/apps/stylebop) on that file (or folder). The cursor's line number is forwarded so StyleBop's smart-router lands on the matching visual surface — Rulesets canvas, Animations tab, Tokens tab, or Fonts column — instead of dumping you in the Code tab.
+Right-click any `.css`, `.html`, or `.htm` file (or a folder) in IntelliJ IDEA, WebStorm, PyCharm, etc. and pick **Open in StyleBop** to launch [StyleBop](https://bendansby.com/apps/stylebop) on that target. For HTML files, StyleBop edits the inner `<style>` block (and inline `style="…"` attributes) as if they were a CSS file — the surrounding markup round-trips verbatim. The cursor's line number is forwarded so StyleBop's smart-router lands on the matching visual surface — Rulesets canvas, Animations tab, Tokens tab, or Fonts column — instead of dumping you in the Code tab.
 
 ## Requirements
 

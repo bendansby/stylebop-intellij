@@ -1,14 +1,17 @@
 <idea-plugin>
     <id>com.bendansby.stylebop</id>
     <name>StyleBop</name>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <vendor email="hello@bendansby.com" url="https://bendansby.com/apps/stylebop">Ben Dansby</vendor>
 
     <description><![CDATA[
-        Open the current CSS file or workspace folder in <a href="https://bendansby.com/apps/stylebop">StyleBop</a> &mdash;
+        Open the current CSS or HTML file (or workspace folder) in <a href="https://bendansby.com/apps/stylebop">StyleBop</a> &mdash;
         a visual macOS editor for stylesheets.
         <br><br>
-        Right-click any <code>.css</code> file or folder and pick <b>Open in StyleBop</b>.
+        Right-click any <code>.css</code>, <code>.html</code>, or <code>.htm</code> file
+        (or a folder) and pick <b>Open in StyleBop</b>. For HTML files, StyleBop edits the
+        inner <code>&lt;style&gt;</code> block (and inline <code>style="&hellip;"</code>
+        attributes) as if they were CSS &mdash; the surrounding markup round-trips verbatim.
         The app launches, opens the project, and lands on the construct your cursor was on
         &mdash; a ruleset opens the Rulesets canvas, a <code>@keyframes</code> rule opens the
         Animations tab, a custom property opens the Tokens tab, and so on.
@@ -17,6 +20,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+        <h3>0.1.2</h3>
+        <ul>
+            <li>Recognise <code>.html</code> and <code>.htm</code> files alongside <code>.css</code>. StyleBop edits the inner <code>&lt;style&gt;</code> block (and inline <code>style</code> attributes) as if it were a CSS file.</li>
+        </ul>
         <h3>0.1.1</h3>
         <ul>
             <li>Drop the upper-bound IDE version constraint &mdash; the plugin now loads cleanly on every IDE 2024.1+.</li>
@@ -40,7 +47,7 @@
         <action id="com.bendansby.stylebop.OpenInStyleBopAction"
                 class="com.bendansby.stylebop.OpenInStyleBopAction"
                 text="Open in StyleBop"
-                description="Open this CSS file or folder in StyleBop">
+                description="Open this CSS or HTML file (or folder) in StyleBop">
             <add-to-group group-id="EditorPopupMenu"      anchor="last"/>
             <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
             <add-to-group group-id="EditorTabPopupMenu"   anchor="last"/>
